@@ -1,0 +1,11 @@
+{
+  "env": {
+    "angular": true,
+    "browser": true,
+    "es6": true,
+    "protractor": true
+  },
+
+  "globals": {
+    
+  },
