@@ -2,6 +2,9 @@ const gulp = require('gulp');
 const webpack = require('webpack-stream');
 const eslint = require('eslint');
 
+var browerFiles = ['/server.js'];
+var appFiles = ['app/js/*.js', 'app/css/.css', 'app/index.html'];
+
 gulp.task('webpack:dev', () => {
   gulp.src('./app/js/entry.js')
     .pipe(webpack({
@@ -22,15 +25,20 @@ gulp.task('css:dev', () => {
     .pipe(gulp.dest('./build'));
 });
 
-gulp.task('eslint:BE', () => {
-  return gulp.src('.eslintrc')
+gulp.task('lint:BE', () => {
+  return gulp.src(browerFiles)
+    .pipe(eslint())
     .pipe(eslint.format());
 });
 
-gulp.task('eslint:FE', () => {
-  return gulp.src('app/.eslintrc')
+gulp.task('lint:FE', () => {
+  return gulp.src(appFiles)
+    .pipe(eslint())
     .pipe(eslint.format());
 });
 
-gulp.task('default', ['webpack:dev', 'static:dev', 'css:dev', 'eslint:BE', 'eslint:FE']);
-gulp.task('build:dev', ['webpack:dev', 'static:dev', 'css:dev', 'eslint:BE', 'eslint:FE']);
+gulp.task('protractor', ['lint:BE', 'lint:FE']);
+gulp.task('protractor', ['']);
+
+gulp.task('build:dev', ['webpack:dev', 'static:dev', 'css:dev']);
+gulp.task('default', ['webpack:dev', 'static:dev', 'css:dev']);
