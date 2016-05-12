@@ -7,10 +7,3 @@ describe('our super awesome angular app', function() {
     });
   });
 });
-// // Find element with {{scopelet}} syntax.
-// element(by.binding('person.name')).getText().then(function(name) {
-//  expect(name).toBe('Foo');
-// });
-
-// // Find element with ng-bind="scopelet" syntax.
-// expect(element(by.binding('person.email')).getText()).toBe('foo@bar.com');
