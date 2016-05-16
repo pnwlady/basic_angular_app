@@ -1,1 +1,3 @@
-const express = require('express')().use(require('express').static(__dirname + '/build')).listen(4020, () => { console.log('server up'); })
+const express = require('express');
+
+express().use(express.static(__dirname + '/build')).listen(5000, () => console.log('server up'));

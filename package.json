@@ -16,6 +16,7 @@
   "devDependencies": {
     "angular": "^1.5.5",
     "eslint": "^2.9.0",
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-protractor": "^2.3.0"
   }
 }
