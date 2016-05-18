@@ -2,6 +2,5 @@
 
 ###How to run  
   * Type in ```node server```
-  * Open browser to localhost:4020
+  * Open browser to localhost:5000
   * Type in words to see them display
-  
