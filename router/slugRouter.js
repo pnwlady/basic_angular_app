@@ -1,7 +1,7 @@
 const Router = require('express').Router;
-const Slug = require(__dirname + '/../../models/slug');
+const Slug = require(__dirname + '/../models/slug');
 const bodyParser = require('body-parser').json();
-const serverErrorHandler = require(__dirname + './../../lib/errorHandler');
+const serverErrorHandler = require(__dirname + '/../lib/errorHandler');
 const slugRouter = module.exports = new Router();
 
 slugRouter.post('/slugs', bodyParser, (req, res) => {

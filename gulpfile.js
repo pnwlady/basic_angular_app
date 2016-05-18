@@ -3,7 +3,7 @@ var eslint = require('gulp-eslint');
 var webpack = require('webpack-stream');
 
 var paths = {
-  scripts: [__dirname + '/lib/*.js', __dirname + '/../routers/*.js', __dirname + '/../server/*.js', __dirname + '/index.js'],
+  scripts: [__dirname + '/lib/*.js', __dirname + '/../router/*.js', __dirname + '/../server/*.js', __dirname + '/index.js'],
   tests: [__dirname + '/test/server-test.js'],
   client: ['app/**/*.js']
 };

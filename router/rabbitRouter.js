@@ -1,7 +1,7 @@
 const Router = require('express').Router;
-const Rabbit = require(__dirname + '/../../models/rabbit');
+const Rabbit = require(__dirname + '/../models/rabbit');
 const bodyParser = require('body-parser').json();
-const serverErrorHandler = require(__dirname + '/../../lib/errorHandler');
+const serverErrorHandler = require(__dirname + '/../lib/errorHandler');
 const rabbitRouter = module.exports = new Router();
 
 rabbitRouter.post('/rabbits', bodyParser, (req, res) => {

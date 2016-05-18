@@ -9,12 +9,9 @@ Two Mongoose Schema models are created (resources) to route and manipulate throu
    * Mongo
    * Mongoose
 
-##Dev dependencies
-   * Chai
-   * Chai-Http  
+##Dev dependencies 
    * Gulp-Eslint
-   * Gulp-Mocha
-   * Mocha
+
 
 The databases can be
 located at ```localhost:4020```
