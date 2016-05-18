@@ -16,7 +16,6 @@ gulp.task('webpack:dev', () => {
       }
     }))
     .pipe(gulp.dest('./build'))
-    //do this on last program - protractor
     .on('end', () => {
       children.forEach((child) => {
         child.kill('SIGTERM');
