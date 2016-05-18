@@ -1,68 +1,48 @@
-const gulp = require('gulp');
-const gulpPro = require('gulp-protractor');
-const webpack = require('webpack-stream');
-const cp = require('child_process');
-const eslint = require('eslint');
+var gulp = require('gulp');
+var eslint = require('gulp-eslint');
+var webpack = require('webpack-stream');
 
-var browerFiles = ['/server.js'];
-var appFiles = ['app/js/*.js', 'app/css/.css', 'app/index.html'];
-var children = [];
+var paths = {
+  scripts: [__dirname + '/lib/*.js', __dirname + '/../routers/*.js', __dirname + '/../server/*.js', __dirname + '/index.js'],
+  tests: [__dirname + '/test/server-test.js'],
+  client: ['app/**/*.js']
+};
 
-gulp.task('webpack:dev', () => {
-  gulp.src('./app/js/entry.js')
+gulp.task('lint', () => {
+  return gulp.src(paths.tests)
+    .pipe(eslint({
+      envs: [
+        'mocha',
+        'es6'
+      ]
+    }))
+    .pipe(eslint.format());
+});
+
+gulp.task('lintClient', () => {
+  return gulp.src(paths.client)
+    .pipe(eslint('./app/.eslintrc'))
+    .pipe(eslint.format());
+});
+
+gulp.task('webpack', () => {
+  return gulp.src('./app/js/entry.js')
     .pipe(webpack({
       output: {
         filename: 'bundle.js'
       }
-    }))
-    .pipe(gulp.dest('./build'))
-    .on('end', () => {
-      children.forEach((child) => {
-        child.kill('SIGTERM');
-      });
-    });
-});
-
-gulp.task('static:dev', () => {
-  gulp.src('app/**/*.html')
-    .pipe(gulp.dest('./build'));
-});
-
-gulp.task('css:dev', () => {
-  gulp.src('app/css/*.css')
-    .pipe(gulp.dest('./build'));
-});
-
-gulp.task('lint:BE', () => {
-  return gulp.src(browerFiles)
-    .pipe(eslint())
-    .pipe(eslint.format());
-});
-
-gulp.task('lint:FE', () => {
-  return gulp.src(appFiles)
-    .pipe(eslint())
-    .pipe(eslint.format());
-});
-
-gulp.task('startservers:test', () => {
-  // client side server
-  children.push(cp.fork('server.js'));
-  children.push(cp.spawn('webdriver-manager', ['start']));
-  children.push(cp.spawn('mongod', ['--dbpath=./db']));
-  // back end server
-  children.push(cp.span('_server.js', [], { env: { MONGO_URI: 'mongod:localhost/test-server/' } }));
-});
-
-gulp.task('protractor:test', ['startservers:test', 'build:dev'], () => {
-  gulp.src('/test/*spec.js')
-    .pipe(gulpPro({
-      configFile: 'test/config.js'
     }));
 });
 
-gulp.task('protractor', ['lint:BE', 'lint:FE']);
-gulp.task('protractor', ['']);
+gulp.task('static', () => {
+  gulp.src('app/**/*.html')
+    .pipe(gulp.dest('./build'));
+  gulp.src('app/**/*.css')
+    .pipe(gulp.dest('./build'));
+});
 
-gulp.task('build:dev', ['webpack:dev', 'static:dev', 'css:dev']);
-gulp.task('default', ['webpack:dev', 'static:dev', 'css:dev']);
+
+gulp.task('default', ['lintClient', 'webpack', 'static']);
+gulp.task('build', ['webpack', 'static']);
+
+gulp.task('default', ['lint']);

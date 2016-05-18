@@ -1,14 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="utf-8">
-    <title>Stuff</title>
-    <link rel="stylesheet" type="text/css" href="index.css">
+    <meta charset="UTF-8">
+    <title>Slug and Rabbit dance off!</title>
+    <link rel="stylesheet" href="/css/style.css">
   </head>
 
-  <body data-ng-app="demoApp">
-    <h1 id="greeting">{{greeting}}</h1>
-    <input type="text/javascript" src="app/js/entry.js" data-ng-model="greeting">
-    <script src="./bundle.js"></script>
+  <body data-ng-app="myApp">
+    <section data-ng-controller="SlugController">
+      <h1 id="slug">{{slug.name}}</h1>
+      <input type="text" data-ng-model="slug.name">
+      <h1 id="slug">{{slug.type}}</h1>
+      <input type="text" data-ng-model="slug.type">
+      <h1 id="slug">{{slug.food}}</h1>
+      <input type="text" data-ng-model="slug.food">
+      <button data-ng-click="update()">Update!</button>
+    </section>
+
+    <section data-ng-controller="RabbitController">
+      <h1 id="rabbit">{{rabbit.name}}</h1>
+      <input type="text" data-ng-model="rabbit.name">
+      <h1>{{rabbit.type}}</h1>
+      <input type="text" data-ng-model="rabbit.type">
+      <h1>{{rabbit.food}}</h1>
+      <input type="text" data-ng-model="rabbit.food">
+    </section>
+
+    <script type="text/javascript" src="./bundle.js"></script>
+    <!-- <script type="text/javascript" src="app/js/entry.js"></script> -->
   </body>
+
 </html>
