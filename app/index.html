@@ -3,30 +3,62 @@
   <head>
     <meta charset="UTF-8">
     <title>Slug and Rabbit dance off!</title>
-    <link rel="stylesheet" href="/build/.css">
+    <link rel="stylesheet" href="/css/style.css">
   </head>
 
   <body data-ng-app="myApp">
-    <section data-ng-controller="SlugController">
-      <h1 id="slug">{{slug.name}}</h1>
-      <input type="text" data-ng-model="slug.name">
-      <h1 id="slug">{{slug.type}}</h1>
-      <input type="text" data-ng-model="slug.type">
-      <h1 id="slug">{{slug.food}}</h1>
-      <input type="text" data-ng-model="slug.food">
-      <button data-ng-click="update()">Update!</button>
+
+    <section data-ng-controller="SlugController" class="slug">
+
+      <ul id="sluglist">
+        <li dat-ng-repeat="Slug in sluglist">
+        {{slug.name}}, {{slug.type}}, eats: {{slug.food}}
+
+          <form data-ng-if="slug.editing" data-ng-submit="slug.updateSlug(Slug)">
+            <label for="name">Name</label>
+            <input type="text" name="name" data-ng-model="slug.name">
+
+            <label for="type">Type</label>
+            <input type="text" name="type" data-ng-model="slug.type">
+
+            <label for="food">Favorite food</label>
+            <input type="text" name="food" data-ng-model="slug.food">
+
+            <button type="submit">Update Slug</button>
+            <button data-ng-click="slug.editing = !slug.editing">Update!</button>
+          </form>
+
+        </li>
+      </ul>
+
     </section>
 
-    <section data-ng-controller="RabbitController">
-      <h1 id="rabbit">{{rabbit.name}}</h1>
-      <input type="text" data-ng-model="rabbit.name">
-      <h1>{{rabbit.type}}</h1>
-      <input type="text" data-ng-model="rabbit.type">
-      <h1>{{rabbit.food}}</h1>
-      <input type="text" data-ng-model="rabbit.food">
+    <section data-ng-controller="RabbitController" class="rabbit">
+
+      <ul id="rabbitlist">
+        <li dat-ng-repeat="rabbit in rabbitlist">
+        {{rabbit.name}}, {{rabbit.type}}, eats: {{rabbit.food}}
+
+          <form data-ng-if="rabbit.editing" data-ng-submit="rabbitlist.updateRabbit(rabbit)">
+            <label for="name">Name</label>
+            <input type="text" name="name" data-ng-model="rabbit.name">
+
+            <label for="type">Type</label>
+            <input type="text" name="type" data-ng-model="rabbit.type">
+
+            <label for="food">Favorite food</label>
+            <input type="text" name="food" data-ng-model="rabbit.food">
+
+            <button type="submit">Update Rabbit</button>
+            <button data-ng-click="rabbit.editing = !rabbit.editing">Update!</button>
+          </form>
+
+        </li>
+      </ul>
+
     </section>
 
-    <script type="text/javascript" src="./bundle.js"></script>
+    <script type="text/javascript" src="/../build/bundle.js"></script>
   </body>
 
 </html>
