@@ -26,7 +26,6 @@
   },
   "homepage": "https://github.com/pnwlady/rest_api#readme",
   "dependencies": {
-    "bcrypt": "^0.8.6",
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
     "mongodb": "^2.1.16",

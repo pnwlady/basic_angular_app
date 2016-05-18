@@ -3,9 +3,9 @@ var eslint = require('gulp-eslint');
 var webpack = require('webpack-stream');
 
 var paths = {
-  scripts: [__dirname + '/lib/*.js', __dirname + '/../router/*.js', __dirname + '/../server/*.js', __dirname + '/index.js'],
-  tests: [__dirname + '/test/server-test.js'],
-  client: ['app/**/*.js']
+  scripts: [__dirname + '/router/*.js', __dirname + 'server.js', __dirname + 'index.js'],
+  // tests: [__dirname + '/test/server-test.js'],
+  client: ['app/js/*.js', 'app/index.html']
 };
 
 gulp.task('lint', () => {
@@ -20,13 +20,13 @@ gulp.task('lint', () => {
 });
 
 gulp.task('lintClient', () => {
-  return gulp.src(paths.client)
+  gulp.src(paths.client)
     .pipe(eslint('./app/.eslintrc'))
     .pipe(eslint.format());
 });
 
 gulp.task('webpack', () => {
-  return gulp.src('./app/js/entry.js')
+  gulp.src('./app/js/entry.js')
     .pipe(webpack({
       output: {
         filename: 'bundle.js'
@@ -36,9 +36,9 @@ gulp.task('webpack', () => {
 
 gulp.task('static', () => {
   gulp.src('app/**/*.html')
-    .pipe(gulp.dest('./build'));
+    .pipe(gulp.dest('/../build'));
   gulp.src('app/**/*.css')
-    .pipe(gulp.dest('./build'));
+    .pipe(gulp.dest('/../build'));
 });
 
 

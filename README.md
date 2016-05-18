@@ -5,12 +5,13 @@ Two Mongoose Schema models are created (resources) to route and manipulate throu
 ###Dependencies
    * Body-Parser
    * Express
-   * Gulp
    * Mongo
    * Mongoose
 
 ##Dev dependencies
+   * Gulp
    * Gulp-Eslint
+   * 
 
 
 The databases can be
@@ -19,6 +20,6 @@ located at ```localhost:4020```
 ```/api/rabbits``` and ```/api/slugs```
 
 ### How to Use
+Run mongo ```mongod --dbpath=./db```
 Run ```node index``` to start the client and backend servers.
-Run ```node client_server.js``` to run the client server.
 Add slugs by going posting to localhost:4020/api/slugs
