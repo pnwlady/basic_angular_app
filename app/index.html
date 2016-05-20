@@ -1,14 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="utf-8">
-    <title>Stuff</title>
-    <link rel="stylesheet" type="text/css" href="index.css">
+    <meta charset="UTF-8">
+    <title>Slug and Rabbit dance off!</title>
+    <link rel="stylesheet" href="/css/style.css">
   </head>
 
-  <body data-ng-app="demoApp">
-    <h1 id="greeting">{{greeting}}</h1>
-    <input type="text/javascript" src="app/js/entry.js" data-ng-model="greeting">
-    <script src="./bundle.js"></script>
+  <body data-ng-app="myApp">
+
+    <section data-ng-controller="SlugController" class="slug">
+
+      <ul id="sluglist">
+        <li dat-ng-repeat="Slug in sluglist">
+        {{slug.name}}, {{slug.type}}, eats: {{slug.food}}
+
+          <form data-ng-if="slug.editing" data-ng-submit="slug.updateSlug(Slug)">
+            <label for="name">Name</label>
+            <input type="text" name="name" data-ng-model="slug.name">
+
+            <label for="type">Type</label>
+            <input type="text" name="type" data-ng-model="slug.type">
+
+            <label for="food">Favorite food</label>
+            <input type="text" name="food" data-ng-model="slug.food">
+
+            <button type="submit">Update Slug</button>
+            <button data-ng-click="slug.editing = !slug.editing">Update!</button>
+          </form>
+
+        </li>
+      </ul>
+
+    </section>
+
+    <section data-ng-controller="RabbitController" class="rabbit">
+
+      <ul id="rabbitlist">
+        <li dat-ng-repeat="rabbit in rabbitlist">
+        {{rabbit.name}}, {{rabbit.type}}, eats: {{rabbit.food}}
+
+          <form data-ng-if="rabbit.editing" data-ng-submit="rabbitlist.updateRabbit(rabbit)">
+            <label for="name">Name</label>
+            <input type="text" name="name" data-ng-model="rabbit.name">
+
+            <label for="type">Type</label>
+            <input type="text" name="type" data-ng-model="rabbit.type">
+
+            <label for="food">Favorite food</label>
+            <input type="text" name="food" data-ng-model="rabbit.food">
+
+            <button type="submit">Update Rabbit</button>
+            <button data-ng-click="rabbit.editing = !rabbit.editing">Update!</button>
+          </form>
+
+        </li>
+      </ul>
+
+    </section>
+
+    <script type="text/javascript" src="/../build/bundle.js"></script>
   </body>
+
 </html>

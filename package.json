@@ -1,20 +1,41 @@
 {
-  "name": "week_6",
+  "name": "heidilaursen",
   "version": "1.0.0",
-  "description": "",
-  "main": "gulpfile.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+  "description": "Express api with REST and two Mongo databases. ",
+  "main": "node index.js",
+  "directories": {
+    "test": "test"
   },
+  "scripts": {
+    "test": " ./node_modules/mocha/bin/mocha test",
+    "start": "node index.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pnwlady/rest_api.git"
+  },
+  "keywords": [
+    "REST",
+    "Express",
+    "Mongodb"
+  ],
+  "author": "Heidi Laursen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pnwlady/rest_api/issues"
+  },
+  "homepage": "https://github.com/pnwlady/rest_api#readme",
   "dependencies": {
+    "body-parser": "^1.15.0",
     "express": "^4.13.4",
-    "webpack-stream": "^3.2.0"
+    "mongodb": "^2.1.16",
+    "mongoose": "^4.4.13"
   },
   "devDependencies": {
     "angular": "^1.5.5",
-    "eslint": "^2.10.2",
     "gulp": "^3.9.1",
-    "gulp-protractor": "^2.3.0"
+    "gulp-eslint": "^2.0.0",
+    "gulp-protractor": "^2.3.0",
+    "webpack-stream": "^3.2.0"
   }
 }

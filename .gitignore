@@ -1,2 +1,7 @@
 node_modules
-build
+node_modules/
+**/node_modules
+db/
+db
+build/
+npm-debug.log
