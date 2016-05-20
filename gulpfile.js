@@ -27,7 +27,7 @@ gulp.task('lintClient', () => {
 });
 
 gulp.task('entry', () => {
-  return gulp.src('./app/js/entry.js')
+  return gulp.src('app/js/entry.js')
     .pipe(webpack({
       output: {
         filename: 'bundle.js'
@@ -37,12 +37,7 @@ gulp.task('entry', () => {
 });
 
 gulp.task('html', () => {
-  return gulp.src('/app/index.html')
-    .pipe(webpack({
-      output: {
-        filename: 'bundle.html'
-      }
-    }))
+  return gulp.src('app/**/*.html')
     .pipe(gulp.dest('./build'));
 });
 

@@ -1,6 +1,6 @@
 const angular = require('angular');
 const myApp = angular.module('myApp', []);
-const baseUrl = 'http://localhost:5555';
+const baseUrl = 'http://localhost:5000';
 
 var handleErrors = function(error) {
   console.log(error);
