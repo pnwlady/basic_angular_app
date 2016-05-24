@@ -1,6 +1,7 @@
 const angular = require('angular');
 const myApp = angular.module('myApp', []);
-const baseUrl = 'http://localhost:5000';
+const PORT = process.env.PORT || 3000;
+const baseUrl = 'http://localhost:' + PORT;
 
 var handleErrors = function(error) {
   console.log(error);
@@ -8,18 +9,19 @@ var handleErrors = function(error) {
 };
 
 myApp.controller('SlugController', ['$http', function($http) {
-  this.slug = [];
+  this.slugs = [];
   this.getAll = () => {
     $http.get(baseUrl + '/api/slugs')
       .then((res) => {
-        this.slug = res.data;
+        this.slugs = res.data;
+        console.log(res.data);
       }, handleErrors.bind(this));
   };
 
   this.createSlug = () => {
     $http.post(baseUrl + '/api/slugs', this.newSlug)
       .then((res) => {
-        this.slug.push(res.data);
+        this.slugs.push(res.data);
         this.newSlug = null;
       }, handleErrors.bind(this));
   };

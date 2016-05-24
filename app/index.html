@@ -3,18 +3,18 @@
   <head>
     <meta charset="UTF-8">
     <title>Slug and Rabbit dance off!</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="style.css">
   </head>
 
   <body data-ng-app="myApp">
 
-    <section data-ng-controller="SlugController" class="slug">
+    <section data-ng-controller="SlugController" class="slug" data-ng-init="SlugController.getAll()">
 
       <ul id="sluglist">
-        <li dat-ng-repeat="Slug in sluglist">
+        <li dat-ng-repeat="slug in slugs">
         {{slug.name}}, {{slug.type}}, eats: {{slug.food}}
 
-          <form data-ng-if="slug.editing" data-ng-submit="slug.updateSlug(Slug)">
+          <form data-ng-if="slug.editing" data-ng-submit="slug.updateSlug(slug)" class="slug">
             <label for="name">Name</label>
             <input type="text" name="name" data-ng-model="slug.name">
 
@@ -39,7 +39,7 @@
         <li dat-ng-repeat="rabbit in rabbitlist">
         {{rabbit.name}}, {{rabbit.type}}, eats: {{rabbit.food}}
 
-          <form data-ng-if="rabbit.editing" data-ng-submit="rabbitlist.updateRabbit(rabbit)">
+          <form data-ng-if="rabbit.editing" data-ng-submit="rabbitlist.updateRabbit(rabbit)" class="rabbit">
             <label for="name">Name</label>
             <input type="text" name="name" data-ng-model="rabbit.name">
 
@@ -58,7 +58,7 @@
 
     </section>
 
-    <script type="text/javascript" src="/../build/bundle.js"></script>
+    <script type="text/javascript" src="/bundle.js"></script>
   </body>
 
 </html>

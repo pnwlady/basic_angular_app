@@ -1,5 +1,7 @@
 var gulp = require('gulp');
 var eslint = require('gulp-eslint');
+var sass = require('gulp-sass');
+var map = require('gulp-sourcemaps');
 var webpack = require('webpack-stream');
 
 var path = {
@@ -36,11 +38,23 @@ gulp.task('entry', () => {
     .pipe(gulp.dest('./build'));
 });
 
+gulp.task('sass:dev', () => {
+  return gulp.src('app/css/style.scss')
+    .pipe(map.init())
+    .pipe(sass())
+    .pipe(map.write('./'))
+    .pipe(gulp.dest('./build'));
+});
+
 gulp.task('html', () => {
   return gulp.src('app/**/*.html')
     .pipe(gulp.dest('./build'));
 });
 
+gulp.task('sass:watch', () => {
+  gulp.watch('./*.scss', ['sass:dev']);
+});
+
 gulp.task('lint', ['lintServer', 'lintClient']);
 gulp.task('build', ['entry', 'html']);
-gulp.task('default', ['build', 'lint']);
+gulp.task('default', ['build', 'lint', 'sass:dev']);
