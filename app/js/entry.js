@@ -1,7 +1,8 @@
 const angular = require('angular');
 const myApp = angular.module('myApp', []);
-const PORT = process.env.PORT || 3000;
-const baseUrl = 'http://localhost:' + PORT;
+const baseUrl = 'http://localhost:4020';
+// const slugUrl = baseUrl + '/api/slugs';
+// const rabbitUrl = baseUrl + '/api/rabbits';
 
 var handleErrors = function(error) {
   console.log(error);

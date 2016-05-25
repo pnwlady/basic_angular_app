@@ -1,9 +1,15 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3000;
 const rabbitRouter = require(__dirname + '/router/rabbitRouter');
 const slugRouter = require(__dirname + '/router/slugRouter');
 const mongoose = require('mongoose');
+
+app.use( (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header('Access-Control-Allow-Methods', 'DELETE, PUT');
+  next();
+});
 
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost/slug_rabbit_db');
 
@@ -22,4 +28,4 @@ module.exports = exports = {
   }
 };
 
-app.listen(PORT, () => {console.log('server up on ' + PORT);});
+app.listen(4020, () => {console.log('server up');});
