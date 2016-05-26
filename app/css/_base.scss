@@ -1,4 +1,21 @@
-body {
-  font: 100% Helvetica, sans-serif;
-  color: #333;
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+
+section {
+  div {
+    border: 1px solid black;
+  }
+  ul {
+    width: 100%;
+    float: left;
+  }
+  li {
+    float: left;
+    width: 100%;
+    background: orange;
+  }
+  p {
+    font-weight: bold;
+    line-height: 1.5em;
+  }
 }
