@@ -11,31 +11,22 @@ Two Mongoose Schema models are created (resources) to route and manipulate throu
 ##Dev dependencies
    * Gulp
    * Gulp-Eslint
+   * Webpack-stream
 
-### How to Use
-Run mongo ```mongod --dbpath=./db
+### How to test with protractor and selenium
+In the first terminal:
 ```
-Run ```node index
-``` to start the client and backend servers.
-Go to ```localhost:5000```
-
-## Slugs and Rabbits
-Enter Name, Type and Food in the test fields and click the update Slug or update Rabbit buttons.
-
-New entry will display in url.
-Example:
-```http://localhost:5000/?name=Sven&type=black&food=leaf
+webdriver-manager start
 ```
-
-### Database
-See slugs by posting to localhost:4020/api/slugs
-
-The databases is located at ```localhost:4020
+In a second terminal:
 ```
-
-```/api/rabbits
-``` and ```/api/slugs
+node server.js
 ```
-
-The angular app is located at ```localhost:5000
+In a third terminal:
+```
+gulp
+```
+Run test with:
+```
+protractor ./test/config.js
 ```
