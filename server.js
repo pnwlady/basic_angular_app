@@ -28,4 +28,4 @@ module.exports = exports = {
   }
 };
 
-app.listen(4020, () => {console.log('server up');});
+app.listen(4020, () => {console.log('server up on 4020');});
