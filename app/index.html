@@ -12,7 +12,7 @@
       <p>Can they share their greens?</p>
       <section data-ng-controller="SlugController as slugctrl" class="slug" data-ng-init="slugctrl.getAll()">
         <h2>Slugs</h2>
-        <h3>Add a Character:</h3>
+        <h3>Add a Slug:</h3>
         <form data-ng-submit="slugctrl.createSlug()">
           <label>Name <input type="text" data-ng-model="slugctrl.newSlug.name"></label>
           <label>Variety <input type="text" data-ng-model="slugctrl.newSlug.variety"></label>
@@ -22,19 +22,14 @@
 
         <ol>
           <li data-ng-repeat="slug in slugctrl.slug">
-            <p data-ng-if="!slug.editing">{{slug.name}}, {{slug.variety}}, eats: {{slug.food}}</p>
-
-
+            <p data-ng-if="!slug.editing">{{slug.name}} is a {{slug.variety}} and likes to eat: {{slug.food}}</p>
             <form data-ng-if="!slug.editing" data-ng-submit="slugctrl.updateSlug(slug)">
               <label for="name">Name</label>
               <input type="text" name="name" data-ng-model="slug.name">
-
-              <label for="type">Type</label>
-              <input type="text" name="type" data-ng-model="slug.type">
-
+              <label for="type">Variety</label>
+              <input type="text" name="type" data-ng-model="slug.variety">
               <label for="food">Favorite food</label>
               <input type="text" name="food" data-ng-model="slug.food">
-
               <button type="submit">Update Slug</button>
               <button data-ng-click="slugctrl.cancelSlug(slug)">Cancel</button>
             </form>
@@ -46,39 +41,30 @@
       </section>
 
       <section data-ng-controller="RabbitController as rabbitctrl" class="rabbit" data-ng-init="rabbitctrl.getAll()">
-
-        <form data-ng-if="rabbits.editing" data-ng-submit="rabbit.updateRabbit(rabbits)">
-          <label for="name">Name</label>
-          <input type="text" name="name" data-ng-model="rabbits.name">
-
-          <label for="type">Variety</label>
-          <input type="text" name="type" data-ng-model="rabbits.variety">
-
-          <label for="food">Favorite food</label>
-          <input type="text" name="food" data-ng-model="rabbits.food">
-
-          <button type="submit">Update Rabbit</button>
-          <button data-ng-click="rabbits.editing = !rabbits.editing">Update!</button>
+        <form data-ng-submit="rabbitctrl.createRabbit()">
+          <label>Name <input type="text" data-ng-model="rabbitctrl.newRabbit.name"></label>
+          <label>Variety <input type="text" data-ng-model="rabbitctrl.newRabbit.variety"></label>
+          <label>Food <input type="text" data-ng-model="rabbitctrl.newRabbit.food"></label>
+          <button type="submit">Create Rabbit</button>
         </form>
 
         <ul>
-          <li dat-ng-repeat="rabbits in rabbitctrl.rabbits">
-          {{rabbits.name}}, {{rabbits.type}}, eats: {{rabbits.food}}
+          <li data-ng-repeat="rabbit in rabbitctrl.rabbit">
+          {{rabbit.name}}, {{rabbit.variety}}, eats: {{rabbit.food}}
 
-            <form data-ng-if="rabbits.editing" data-ng-submit="rabbitctrl.updateRabbit(rabbits)">
+            <form data-ng-if="rabbit.editing" data-ng-submit="rabbitctrl.updateRabbit(rabbit)">
               <label for="name">Name</label>
-              <input type="text" name="name" data-ng-model="rabbits.name">
+              <input type="text" name="name" data-ng-model="rabbit.name">
 
-              <label for="type">Type</label>
-              <input type="text" name="type" data-ng-model="rabbits.type">
+              <label for="type">Variety</label>
+              <input type="text" name="type" data-ng-model="rabbits.variety">
 
               <label for="food">Favorite food</label>
-              <input type="text" name="food" data-ng-model="rabbits.food">
+              <input type="text" name="food" data-ng-model="rabbit.food">
 
               <button type="submit">Update Rabbit</button>
-              <button data-ng-click="rabbits.editing = !rabbits.editing">Update!</button>
+              <button data-ng-click="rabbit.editing = !rabbit.editing">Update!</button>
             </form>
-
           </li>
         </ul>
 
@@ -86,5 +72,4 @@
     </main>
     <script type="text/javascript" src="/bundle.js"></script>
   </body>
-
 </html>
