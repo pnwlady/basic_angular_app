@@ -1,33 +1,8 @@
-var gulp = require('gulp');
-var eslint = require('gulp-eslint');
-var webpack = require('webpack-stream');
+const gulp = require('gulp');
+const webpack = require('webpack-stream');
 
-var path = {
-  scripts: ['client_server.js', 'index.js', 'router/**/*.js',
-'models/**/*.js', 'gulpfile.js'],
-  tests: [__dirname + '/test/server-test.js'],
-  client: ['app/js/entry.js']
-};
-
-gulp.task('lintServer', () => {
-  return gulp.src(path.scripts)
-    .pipe(eslint({
-      envs: [
-        'mocha',
-        'es6'
-      ]
-    }))
-    .pipe(eslint.format());
-});
-
-gulp.task('lintClient', () => {
-  return gulp.src(path.client)
-    .pipe(eslint('./app/.eslintrc'))
-    .pipe(eslint.format());
-});
-
-gulp.task('entry', () => {
-  return gulp.src('app/js/entry.js')
+gulp.task('webpack:dev', () => {
+  gulp.src('./app/js/entry.js')
     .pipe(webpack({
       output: {
         filename: 'bundle.js'
@@ -36,11 +11,15 @@ gulp.task('entry', () => {
     .pipe(gulp.dest('./build'));
 });
 
-gulp.task('html', () => {
-  return gulp.src('app/**/*.html')
+gulp.task('static:dev', () => {
+  gulp.src('app/**/*.html')
     .pipe(gulp.dest('./build'));
 });
 
-gulp.task('lint', ['lintServer', 'lintClient']);
-gulp.task('build', ['entry', 'html']);
-gulp.task('default', ['build', 'lint']);
+gulp.task('css:dev', () => {
+  gulp.src('app/css/*.css')
+    .pipe(gulp.dest('./build'));
+});
+
+gulp.task('default', ['webpack:dev', 'static:dev', 'css:dev']);
+gulp.task('build:dev', ['webpack:dev', 'static:dev', 'css:dev']);
