@@ -13,33 +13,29 @@ Two Mongoose Schema models are created (resources) to route and manipulate throu
    * Gulp-Eslint
 
 ### How to Use
-Run mongo ```mongod --dbpath=./db
+Run mongo in one terminal:
 ```
-Run ```node index
-``` to start the client and backend servers.
-Go to ```localhost:5000```
-
-## Slugs and Rabbits
-Enter Name, Type and Food in the test fields and click the update Slug or update Rabbit buttons.
-
-New entry will display in url.
-Example:
+mongod --dbpath=./db
 ```
-http://localhost:5000/?name=Sven&type=black&food=leaf
+Start the client side and backend servers in another terminal:
+```
+npm start
+```
+or
+```
+node index
 ```
 
-### Database
-See slugs by posting to localhost:4020/api/slugs
-
-The databases is located at ```localhost:4020
+Open your browser and go to:
+```
+localhost:5000
 ```
 
-```
-/api/rabbits
-``` and
-```
-/api/slugs
-```
 
-The angular app is located at ```localhost:5000
-```
+## Slug and Rabbit Databases
+Mongo database contents are listed and can be edited.
+### Create, Update and Delete Rabbits and Slugs.
+
+Enter Name, Variety and Food in the form fields and click the create, update or delete buttons.
+
+Your new entry will display at the bottom of the creatures list.
