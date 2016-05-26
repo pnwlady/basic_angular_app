@@ -17,15 +17,15 @@
           <label>Name <input type="text" data-ng-model="slugctrl.newSlug.name"></label>
           <label>Variety <input type="text" data-ng-model="slugctrl.newSlug.variety"></label>
           <label>Food <input type="text" data-ng-model="slugctrl.newSlug.food"></label>
-          <button type="submit">Create</button>
+          <button type="submit">Create Slug</button>
         </form>
 
-        <ul>
-          <li dat-ng-repeat="slugs in slugctrl.slugs">
-            <p data-ng-if="!editing">{{slugs.name}}, {{slugs.variety}}, eats: {{slugs.food}}</p>
+        <ol>
+          <li data-ng-repeat="slug in slugctrl.slug">
+            <p data-ng-if="!slug.editing">{{slug.name}}, {{slug.variety}}, eats: {{slug.food}}</p>
 
 
-            <form data-ng-if="!slug.editing" data-ng-submit="slug.updateSlug(slug)">
+            <form data-ng-if="!slug.editing" data-ng-submit="slugctrl.updateSlug(slug)">
               <label for="name">Name</label>
               <input type="text" name="name" data-ng-model="slug.name">
 
@@ -36,12 +36,13 @@
               <input type="text" name="food" data-ng-model="slug.food">
 
               <button type="submit">Update Slug</button>
-              <button data-ng-click="slug.editing = !slug.editing">Update!</button>
+              <button data-ng-click="slugctrl.cancelSlug(slug)">Cancel</button>
             </form>
 
+            <button type="button" data-ng-click="slug.editing = !slug.editing">Edit</button>
+            <button type="button" data-ng-click="slugctrl.removeSlug(slug)">Delete</button>
           </li>
-        </ul>
-
+        </ol>
       </section>
 
       <section data-ng-controller="RabbitController as rabbitctrl" class="rabbit" data-ng-init="rabbitctrl.getAll()">
