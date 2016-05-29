@@ -10,6 +10,7 @@
     <main>
       <h1>Rabbit vs Slug</h1>
       <p>Can they share their greens?</p>
+
       <section data-ng-controller="SlugController as slugctrl" class="slug" data-ng-init="slugctrl.getAll()">
 
         <h2>Slugs</h2>
@@ -23,11 +24,11 @@
 
         <ol>
           <li data-ng-repeat="slug in slugctrl.slug">
-            <p data-ng-if="!slug.editing">{{slug.name}} is a {{slug.variety}} and likes to eat {{slug.food}}</p>
+            <p data-ng-if="!slug.editing">{{slug.name}} is a {{slug.variety}} slug, and enjoys eating {{slug.food}}</p>
             <form data-ng-if="!slug.editing" data-ng-submit="slugctrl.updateSlug(slug)">
               <label for="name">Name</label>
               <input type="text" name="name" data-ng-model="slug.name">
-              <label for="type">Variety</label>
+              <label for="variety">Variety</label>
               <input type="text" name="type" data-ng-model="slug.variety">
               <label for="food">Favorite food</label>
               <input type="text" name="food" data-ng-model="slug.food">
@@ -35,7 +36,7 @@
               <button data-ng-click="slugctrl.cancelSlug(slug)">Cancel</button>
             </form>
 
-            <button type="button" data-ng-click="slug.editing = !slug.editing">Edit</button>
+            <button type="button" data-ng-click="droidsctrl.editSlug(slug)">Edit</button>
             <button type="button" data-ng-click="slugctrl.deleteSlug(slug)">Delete</button>
           </li>
         </ol>
@@ -44,6 +45,7 @@
       <section data-ng-controller="RabbitController as rabbitctrl" class="rabbit" data-ng-init="rabbitctrl.getAll()">
         <h2>Rabbits</h2>
         <h3>Add a Rabbit:</h3>
+
         <form data-ng-submit="rabbitctrl.createRabbit()">
           <label>Name <input type="text" data-ng-model="rabbitctrl.newRabbit.name"></label>
           <label>Variety <input type="text" data-ng-model="rabbitctrl.newRabbit.variety"></label>

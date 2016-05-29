@@ -11,6 +11,8 @@ var handleErrors = function(error) {
 
 myApp.controller('SlugController', ['$http', function($http) {
   this.slug = [];
+  var originalSlug = {};
+
   this.getAll = () => {
     $http.get(baseUrl + '/api/slugs')
       .then((res) => {
@@ -39,6 +41,20 @@ myApp.controller('SlugController', ['$http', function($http) {
       .then(() => {
         this.slug.splice(this.slug.indexOf(slug), 1);
       }, handleErrors.bind(this));
+  };
+
+  this.cancelSlug = (slug) => {
+    slug.editing = false;
+    slug.name = originalSlug.name;
+    slug.variety = originalSlug.variety;
+    slug.food = originalSlug.food;
+  };
+
+  this.editSlug = (slug) => {
+    slug.editing = true;
+    originalSlug.name = slug.name;
+    originalSlug.variety = slug.variety;
+    originalSlug.food = slug.food;
   };
 }]);
 
