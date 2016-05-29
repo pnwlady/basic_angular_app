@@ -3,7 +3,7 @@ var eslint = require('gulp-eslint');
 var sass = require('gulp-sass');
 var map = require('gulp-sourcemaps');
 var webpack = require('webpack-stream');
-var protractor = require('gulp-protractor').protractor;
+// var protractor = require('gulp-protractor').protractor;
 
 var path = {
   scripts: ['client_server.js', 'index.js', 'router/**/*.js',
@@ -12,12 +12,12 @@ var path = {
   client: ['app/js/entry.js']
 };
 
-gulp.src(['./src/tests/*.js'])
-  .pipe(protractor({
-    configFile: 'test/protractor.config.js',
-    args: ['--baseUrl', 'http://127.0.0.1:8000']
-  }))
-  .on('error', (e) => { throw e });
+// gulp.src(['./src/tests/*.js'])
+//   .pipe(protractor({
+//     configFile: 'test/protractor.config.js',
+//     args: ['--baseUrl', 'http://127.0.0.1:8000']
+//   }))
+//   .on('error', (e) => { throw e });
 
 gulp.task('lintServer', () => {
   return gulp.src(path.scripts)
