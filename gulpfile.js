@@ -4,7 +4,7 @@ const nodemon = require('gulp-nodemon');
 const cp = require('child_process');
 const exec = require('child_process').exec;
 const protractor = require('gulp-protractor').protractor;
-const mongoUri = 'mongodb://localhost/4020';
+const mongoUri = 'mongodb://localhost/test_server';
 var children = [];
 
 gulp.task('webpack:dev', () => {
@@ -31,7 +31,7 @@ gulp.task('startservers:test', ['webpack:dev', 'static:dev', 'css:dev'], () => {
   children.push(cp.fork('server.js'));
   children.push(cp.spawn('webdriver-manager', ['start']));
   children.push(cp.spawn('mongod', ['--dbpath=./db']));
-  children.push(cp.fork('../', [], {env: {MONGO_URI: mongoUri}}));
+  children.push(cp.fork('../../week_3//rest_api/heidilaursen/server/server.js', [], {env: {MONGO_URI: mongoUri}}));
 });
 
 // gulp.task('startServers:develop', ['webpack:dev', 'static:dev', 'css:dev'], () => {
