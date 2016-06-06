@@ -1,80 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Slug and Rabbit dance off!</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Angular Practice</title>
   </head>
-
   <body data-ng-app="myApp">
     <main>
-      <h1>Rabbit vs Slug</h1>
-      <p>Can they share their greens?</p>
-
-      <section data-ng-controller="SlugController as slugctrl" class="slug" data-ng-init="slugctrl.getAll()">
-
-        <h2>Slugs</h2>
-        <h3>Add a Slug:</h3>
-        <form data-ng-submit="slugctrl.createSlug()">
-          <label>Name <input type="text" data-ng-model="slugctrl.newSlug.name"></label>
-          <label>Variety <input type="text" data-ng-model="slugctrl.newSlug.variety"></label>
-          <label>Food <input type="text" data-ng-model="slugctrl.newSlug.food"></label>
-          <button type="submit">Create Slug</button>
-        </form>
-
-        <ol>
-          <li data-ng-repeat="slug in slugctrl.slug">
-            <p data-ng-if="!slug.editing">{{slug.name}} is a {{slug.variety}} slug, and enjoys eating {{slug.food}}</p>
-            <form data-ng-if="!slug.editing" data-ng-submit="slugctrl.updateSlug(slug)">
-              <label for="name">Name</label>
-              <input type="text" name="name" data-ng-model="slug.name">
-              <label for="variety">Variety</label>
-              <input type="text" name="type" data-ng-model="slug.variety">
-              <label for="food">Favorite food</label>
-              <input type="text" name="food" data-ng-model="slug.food">
-              <button type="submit">Update Slug</button>
-              <button data-ng-click="slugctrl.cancelSlug(slug)">Cancel</button>
-            </form>
-
-            <button type="button" data-ng-click="droidsctrl.editSlug(slug)">Edit</button>
-            <button type="button" data-ng-click="slugctrl.deleteSlug(slug)">Delete</button>
-          </li>
-        </ol>
-      </section>
-
-      <section data-ng-controller="RabbitController as rabbitctrl" class="rabbit" data-ng-init="rabbitctrl.getAll()">
+      <header>
+        <h1>Slugs and Rabbits</h1>
+      </header>
+      <section data-ng-controller="RabbitController as rabbitCtrl" data-ng-init="rabbitCtrl.getAll()" class="rabbits">
         <h2>Rabbits</h2>
-        <h3>Add a Rabbit:</h3>
-
-        <form data-ng-submit="rabbitctrl.createRabbit()">
-          <label>Name <input type="text" data-ng-model="rabbitctrl.newRabbit.name"></label>
-          <label>Variety <input type="text" data-ng-model="rabbitctrl.newRabbit.variety"></label>
-          <label>Food <input type="text" data-ng-model="rabbitctrl.newRabbit.food"></label>
-          <button type="submit">Create Rabbit</button>
-        </form>
-
-        <ol>
-          <li data-ng-repeat="rabbit in rabbitctrl.rabbit">
-          <p data-ng-if="!rabbit.editing">{{rabbit.name}} is a {{rabbit.variety}} and likes to eat {{rabbit.food}}</p>
-
-            <form data-ng-if="!rabbit.editing" data-ng-submit="rabbitctrl.updateRabbit(rabbit)">
-              <label for="name">Name</label>
-              <input type="text" name="name" data-ng-model="rabbit.name">
-              <label for="type">Variety</label>
-              <input type="text" name="type" data-ng-model="rabbit.variety">
-              <label for="food">Favorite food</label>
-              <input type="text" name="food" data-ng-model="rabbit.food">
-              <button type="submit">Update Rabbit</button>
-              <button data-ng-click="rabbitctrl.cancelRabbit(rabbit)">Cancel</button>
-              <button type="button" data-ng-click="rabbit.editing = !rabbit.editing">Edit</button>
-              <button type="button" data-ng-click="rabbitctrl.deleteRabbit(rabbit)">Delete</button>
-
-            </form>
+        <ul class="errors">
+          <li data-ng-repeat="error in rabbitCtrl.errors"><button data-ng-click="rabbitCtrl.errors.splice(rabbitCtrl.errors.indexOf(error, 1))">X</button> {{error.message}}
           </li>
-        </ol>
-
+        </ul>
+        <div class="create" data-rabbit-form
+            data-button-text="Play God"
+            data-action="create"
+            data-rabbit="rabbitCtrl.newRabbit">
+        </div>
+        <div data-rabbit-list data-rabbits="rabbitCtrl.rabbits"></div>
       </section>
-    </main>
-    <script type="text/javascript" src="/bundle.js"></script>
+  </main>
+    <script src="./bundle.js"></script>
   </body>
 </html>

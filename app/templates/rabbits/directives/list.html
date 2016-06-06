@@ -1,0 +1,13 @@
+<section>
+  <ul class="items">
+    <li data-rabbit-item data-ng-repeat="rabbit in rabbits" data-rabbit="rabbit">
+      <div data-rabbit-form
+          data-ng-if="rabbit.editing"
+          data-button-text="Update Rabbit"
+          data-action="update"
+          data-rabbit="rabbit">
+          <button class="btn-cancel-rabbit" data-ng-click="cancel(rabbit)">Cancel</button>
+      </div>
+    </li>
+  </ul>
+</section>

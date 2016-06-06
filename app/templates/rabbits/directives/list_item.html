@@ -1,0 +1,6 @@
+<div>
+  <ng-transclude></ng-transclude>
+  <p>{{rabbit.name}} is a rabbit that eats {{dino.good}} and has the power of {{rabbit.variety}}</p>
+  <button class="btn-edit-rabbit" data-ng-if="!rabbit.editing" data-ng-click="edit(rabbit)">Edit</button>
+  <button class="btn-remove-rabbit" data-ng-click="remove(rabbit)">I'm here and stuff</button>
+</div>

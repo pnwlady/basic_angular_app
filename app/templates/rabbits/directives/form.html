@@ -1,0 +1,12 @@
+<form data-ng-submit="save(rabbit)">
+  <label for="name">Name</label>
+  <input type="text" name="name" data-ng-model="rabbit.name">
+
+  <label for="variety">Variety</label>
+  <input type="text" name="variety" data-ng-model="rabbit.variety">
+
+  <label for="food">Food</label>
+  <input type="text" name="food" data-ng-model="rabbit.food">
+
+  <ng-transclude></ng-transclude>
+</form>
