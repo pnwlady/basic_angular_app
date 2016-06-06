@@ -10,23 +10,17 @@ Two Mongoose Schema models are created (resources) to route and manipulate throu
 
 ##Dev dependencies
    * Gulp
-   * Gulp-Eslint
+   * gulp-protractor
    * Webpack-stream
 
 ### How to test with protractor and selenium
-In the first terminal:
-```
-webdriver-manager start
-```
-In a second terminal:
-```
-node server.js
-```
-In a third terminal:
+Run a gulp command to bundle build, start server and run selenium and protractor:
 ```
 gulp
 ```
-Run test with:
+or
 ```
-protractor ./test/config.js
+npm start
 ```
+
+*Bella - the only concern I have for you running this, is the server I'm using for mongo in gulp is from my rest_api and I'm not sure it will exist for you? I followed Tyler's code on this. Please let me know if it's a problem and if you have any suggestions...

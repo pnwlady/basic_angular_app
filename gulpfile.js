@@ -34,21 +34,6 @@ gulp.task('startservers:test', ['webpack:dev', 'static:dev', 'css:dev'], () => {
   children.push(cp.fork('../../week_3//rest_api/heidilaursen/server/server.js', [], {env: {MONGO_URI: mongoUri}}));
 });
 
-// gulp.task('startServers:develop', ['webpack:dev', 'static:dev', 'css:dev'], () => {
-//   nodemon({
-//     script: 'server.js',
-//     ext: 'html js css',
-//     ignore: ['build'],
-//     tasks: ['protractor']
-//   });
-// });
-
-// gulp.task('startServers:selenium', () => {
-//   exec('webdriver-manager start', (cb) => {
-//     cb(err);
-//   });
-// });
-
 gulp.task('protractor', ['startservers:test'], () => {
   gulp.src(['./test/*spec.js'])
     .pipe(protractor({
